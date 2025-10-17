@@ -1,0 +1,107 @@
+/* styles.css */
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #475569;
+  --brand: #2d89ef;
+  --brand-2: #1e4dab;
+  --accent: #4CAF50;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+  --border: #e2e8f0;
+}
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --card: #0f172a;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --brand: #60a5fa;
+  --brand-2: #1d4ed8;
+  --accent: #22c55e;
+  --shadow: 0 10px 30px rgba(2,6,23,.6);
+  --border: #1f2937;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 10% -10%, rgba(45,137,239,.08), transparent 60%), var(--bg);
+}
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 1000;
+  backdrop-filter: saturate(180%) blur(10px);
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; gap: 10px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 700; letter-spacing: .3px; }
+.brand .logo { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow); font-weight: 800; }
+.nav ul { list-style: none; display: flex; gap: 12px; margin: 0; padding: 0; align-items: center; }
+.nav a { text-decoration: none; color: var(--muted); padding: 8px 10px; border-radius: 8px; font-weight: 600; }
+.nav a.active, .nav a:hover { color: var(--text); background: color-mix(in srgb, var(--brand) 14%, transparent); }
+.nav-cta { display: flex; align-items: center; gap: 10px; }
+.btn, button.btn { border: 0; background: linear-gradient(90deg, var(--brand), var(--brand-2)); color: #fff; padding: 10px 14px; border-radius: 10px; font-weight: 700; box-shadow: var(--shadow); cursor: pointer; text-decoration: none; }
+.btn.secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+
+/* Burger for mobile */
+.burger { display: none; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; cursor: pointer; }
+.burger span { display: block; width: 20px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; }
+@media (max-width: 900px) {
+  .nav ul { position: absolute; left: 0; right: 0; top: 56px; display: none; flex-direction: column; background: var(--card); padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  .nav ul.open { display: flex; }
+  .burger { display: inline-flex; flex-direction: column; }
+}
+
+.toggle { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+
+/* Hero */
+.hero { max-width: 1100px; margin: 24px auto; padding: 24px 16px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); }
+.hero-card { padding: 24px; }
+.title { margin: 0 0 8px 0; font-size: clamp(24px, 3.2vw, 36px); }
+.subtitle { margin: 0 0 16px 0; color: var(--muted); }
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px 0; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in srgb, var(--card) 90%, var(--brand) 10%); color: var(--text); font-weight: 600; font-size: 14px; }
+.chip .pill { padding: 2px 6px; border-radius: 999px; border: 1px solid var(--border); font-size: 12px; margin-left: 6px; }
+
+/* Highlighted chips for key tools */
+.chip.highlight {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(45,137,239,.25);
+}
+.chip.highlight.glow {
+  box-shadow: 0 6px 22px rgba(45,137,239,.35), inset 0 0 0 1px rgba(255,255,255,.18);
+}
+
+.avatar-card { display: grid; place-items: center; padding: 24px; text-align: center; }
+.avatar { width: 140px; height: 140px; border-radius: 50%; border: 4px solid color-mix(in srgb, var(--brand) 40%, transparent); background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #fff; font-size: 48px; font-weight: 800; box-shadow: var(--shadow); }
+.socials { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; justify-content: center; }
+
+.section { max-width: 1100px; margin: 16px auto; padding: 16px; }
+.section h2 { margin: 6px 0 14px 0; font-size: clamp(20px, 2.6vw, 28px); }
+
+/* Lists and grids */
+.list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.li { padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+.kv { color: var(--muted); font-weight: 600; }
+.mono { font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; }
+.pill { padding: 4px 8px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 18%, transparent); display: inline-block; margin-left: 8px; color: var(--text); border: 1px solid var(--border); font-size: 12px; font-weight: 700; }
+.muted { color: var(--muted); }
+
+/* Project/Repo responsive grids */
+#projectGrid, #repoGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.project-card, .repo-card { padding: 16px; height: 100%; display: flex; flex-direction: column; }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+/* Footer */
+footer { margin-top: 24px; padding: 24px 16px; border-top: 1px solid var(--border); text-align: center; color: var(--muted); }
